@@ -29,7 +29,7 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/my-organization/spooky:${{ github.sha }} .
+          docker build -t scorpas/spooky:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner in IaC mode
         uses: aquasecurity/trivy-action@master
@@ -58,9 +58,9 @@ jobs:
             --access-token "${{ secrets.GITHUB_TOKEN }}" \
             --aqua-key "${{ secrets.AQUA_KEY }}" \
             --aqua-secret "${{ secrets.AQUA_SECRET }}" \
-            --artifact-path "my-image-name:${{ env.tag-version }}" 
+            --artifact-path "scorpas/spooky:${{ github.sha }}" 
 
             # The docker image name:tag of the newly built image
-            # --artifact-path "my-image-name:${{ env.tag-version }}" 
+            # --artifact-path "docker.io/my-organization/spooky:${{ github.sha }}" 
             # OR the path to the root folder of your project. I.e my-repo/my-app 
             # --artifact-path "${{env.MY_APP_ROOT}}"
