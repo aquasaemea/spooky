@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
 
-RUN pip install requests==2.14.0 fee
+RUN pip install -r requirements.txt
 
 RUN curl https://secure.eicar.org/eicar.com.txt -o eicar.com.txt
 
